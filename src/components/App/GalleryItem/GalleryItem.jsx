@@ -2,13 +2,35 @@ import {useState} from 'react';
 
 function GalleryItem ({onGetGallery, galleryList, likeButton}) {
 
+    let [showImage, setShowImage] = useState(true); 
+
+    const handleClick = (event) => {
+        console.log('you clicked an image!');
+
+        let galleryImage = document.getElementById("galImage");
+
+        if (galleryImage.style.display === "none") {
+            galleryImage.style.display = "block";
+        } else {
+            galleryImage.style.display = "none";
+        }
+
+    }
+
     return (
         <>
             {galleryList.map(image => {
                 return (
 
                     <div key= {image.id}>
-                        <img src={image.path} alt={image.title} width="100" height="100"></img>
+                        <img src={image.path} 
+                            alt={image.title} 
+                            width="100" 
+                            height="100"
+                            id="galImage"
+                            onClick ={() => {handleClick(event.target.value)}}
+
+                        ></img>
                         <button onClick={() => {likeButton(image.id)}}>Like</button>
                         <h4>{image.likes} People like this</h4>
                     </div>

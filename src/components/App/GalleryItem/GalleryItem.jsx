@@ -2,17 +2,20 @@ import {useState} from 'react';
 
 function GalleryItem ({onGetGallery, galleryList, likeButton}) {
 
-    let [showImage, setShowImage] = useState(true); 
+    const handleClick = (id) => {
 
-    const handleClick = (event) => {
-        console.log('you clicked an image!');
+        let galleryImage = document.getElementById(id);
+        let imgDescription = document.getElementById(id);
+    
+        if (galleryImage.style.visibility === "visible") {
+            galleryImage.style.visibility = "hidden";
+            imgDescription.style.visibility = "visible";
+            console.log('you clicked a description!');
 
-        let galleryImage = document.getElementById("galImage");
-
-        if (galleryImage.style.display === "none") {
-            galleryImage.style.display = "block";
         } else {
-            galleryImage.style.display = "none";
+            galleryImage.style.visibility = "visible";
+            imgDescription.style.visibility = "hidden";
+            console.log('you clicked an image!');
         }
 
     }
@@ -27,10 +30,14 @@ function GalleryItem ({onGetGallery, galleryList, likeButton}) {
                             alt={image.title} 
                             width="100" 
                             height="100"
-                            id="galImage"
-                            onClick ={() => {handleClick(event.target.value)}}
-
-                        ></img>
+                            id={image.id}
+                            onClick ={() => {handleClick(image.id)}}
+                        />
+                        <br/>
+                        <span id={image.id}
+                        onClick ={() => {handleClick(image.id)}}
+                        >{image.description}</span>
+                        <br/>
                         <button onClick={() => {likeButton(image.id)}}>Like</button>
                         <h4>{image.likes} People like this</h4>
                     </div>

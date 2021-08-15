@@ -2,23 +2,27 @@ import {useState} from 'react';
 
 function GalleryItem ({onGetGallery, galleryList, likeButton}) {
 
-    const handleClick = (id) => {
+    // let [showImage, setShowImage] = useState(true);
 
-        let galleryImage = document.getElementById(id);
-        let imgDescription = document.getElementById(id);
+
+
+    // const handleClick = (id) => {
+
+    //     let galleryImage = document.getElementById(id);
+    //     let imgDescription = document.getElementById(id);
     
-        if (galleryImage.style.visibility === "visible") {
-            galleryImage.style.visibility = "hidden";
-            imgDescription.style.visibility = "visible";
-            console.log('you clicked a description!');
+    //     if (galleryImage.style.visibility === "visible") {
+    //         galleryImage.style.visibility = "hidden";
+    //         imgDescription.style.visibility = "visible";
+    //         console.log('you clicked a description!');
 
-        } else {
-            galleryImage.style.visibility = "visible";
-            imgDescription.style.visibility = "hidden";
-            console.log('you clicked an image!');
-        }
+    //     } else {
+    //         galleryImage.style.visibility = "visible";
+    //         imgDescription.style.visibility = "hidden";
+    //         console.log('you clicked an image!');
+    //     }
 
-    }
+    // }
 
     return (
         <>
@@ -31,11 +35,11 @@ function GalleryItem ({onGetGallery, galleryList, likeButton}) {
                             width="100" 
                             height="100"
                             id={image.id}
-                            onClick ={() => {handleClick(image.id)}}
+                            onClick ={() => {handleClick(image.id)}} // WIP
                         />
                         <br/>
                         <span id={image.id}
-                        onClick ={() => {handleClick(image.id)}}
+                        onClick ={() => {handleClick(image.id)}} // WIP
                         >{image.description}</span>
                         <br/>
                         <button onClick={() => {likeButton(image.id)}}>Like</button>
